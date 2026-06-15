@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="48" viewBox="0 0 220 48" direction="rtl">
+  <g fill="none" stroke="#9a7b4f" stroke-width="2.4" transform="translate(24,24)">
+    <polygon points="0,-15 13,7.5 -13,7.5"/>
+    <polygon points="0,15 13,-7.5 -13,-7.5"/>
+  </g>
+  <text x="48" y="32" font-family="Heebo, Arial, sans-serif" font-size="26" font-weight="800" fill="#23272c">מצבה יהודית</text>
+</svg>

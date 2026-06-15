@@ -1,0 +1,178 @@
+import Link from "next/link";
+import styles from "./page.module.css";
+import { site, telLink, whatsappLink } from "@/site.config";
+import { services } from "@/data/services";
+import { cities } from "@/data/cities";
+import Button from "@/components/Button";
+import LeadForm from "@/components/LeadForm";
+import Faq from "@/components/Faq";
+import JsonLd from "@/components/JsonLd";
+import { localBusiness } from "@/lib/schema";
+import type { QA } from "@/lib/schema";
+
+const homeFaq: QA[] = [
+  {
+    q: "תוך כמה זמן ניתן להקים מצבה?",
+    a: "משך הזמן תלוי בסוג המצבה, בבית העלמין ובאישורים הנדרשים. לאחר פנייה אנו בודקים את פרטי החלקה ומוסרים לכם לוח זמנים מדויק וריאלי, ללא הבטחות שאי אפשר לעמוד בהן.",
+  },
+  {
+    q: "האם המצבה נעשית על פי ההלכה?",
+    a: "כן. אנו מקפידים על הקמת מצבה בהתאם למסורת ולהלכה היהודית, ובכפוף לכללים של בית העלמין הספציפי שבו מתבצעת העבודה.",
+  },
+  {
+    q: "באילו אזורים אתם מקימים מצבות?",
+    a: `אנו מתמחים בהקמת מצבות בירושלים וביישובי הסביבה ברדיוס של עד כ-${site.serviceRadiusKm} ק"מ, ובהם בית שמש, גוש עציון, מבשרת ציון, מעלה אדומים ועוד.`,
+  },
+  {
+    q: "כיצד נקבע מחיר המצבה?",
+    a: "המחיר נקבע לפי סוג האבן, גודל המצבה, מורכבות העיצוב והכיתוב ודרישות בית העלמין. אנו נותנים הצעת מחיר שקופה ומפורטת מראש, ללא הפתעות.",
+  },
+  {
+    q: "האם אתם מלווים את המשפחה בתהליך?",
+    a: "כן. אנו מלווים את המשפחה באופן אישי מרגע הפנייה — בבחירת האבן, ניסוח הכיתוב, התיאום מול בית העלמין ועד להקמה בפועל.",
+  },
+];
+
+const values = [
+  {
+    icon: "✡",
+    title: "על פי ההלכה והמסורת",
+    text: "כל מצבה מוקמת בכבוד הראוי, על פי המסורת וההלכה היהודית ובהתאם לכללי בית העלמין.",
+  },
+  {
+    icon: "✦",
+    title: "עבודת אמן באבן",
+    text: "אבן איכותית, כיתוב מדויק וגימור מוקפד — מצבה שתעמוד בכבוד לאורך שנים.",
+  },
+  {
+    icon: "♥",
+    title: "ליווי אישי ורגיש",
+    text: "אנו יודעים שזו תקופה לא פשוטה, ומלווים אתכם בסבלנות ובאמפתיה בכל שלב.",
+  },
+];
+
+export default function Home() {
+  return (
+    <>
+      {/* ABOVE THE FOLD */}
+      <section className={styles.hero}>
+        <div className={`container ${styles.heroGrid}`}>
+          <div className={styles.heroCopy}>
+            <h1>הקמת מצבות בירושלים והסביבה — בכבוד הראוי</h1>
+            <p className={styles.heroLead}>
+              {site.brand} — הקמת מצבות בירושלים ובכל יישובי האזור, בעבודת אמן
+              ועל פי המסורת וההלכה היהודית. ליווי אישי מרגע הפנייה ועד הקמת
+              המצבה.
+            </p>
+            <div className={styles.heroChips}>
+              <a className={styles.chip} href={telLink()}>
+                ☎ {site.phone.display}
+              </a>
+              <a
+                className={styles.chip}
+                href={whatsappLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                וואטסאפ {site.whatsapp.display}
+              </a>
+            </div>
+            <div className={styles.heroCtas}>
+              <Button href="#lead" variant="accent" size="lg">
+                לקבלת ייעוץ והצעת מחיר
+              </Button>
+              <Button
+                href={whatsappLink()}
+                external
+                variant="whatsapp"
+                size="lg"
+              >
+                שיחה בוואטסאפ
+              </Button>
+            </div>
+          </div>
+
+          <div id="lead">
+            <LeadForm heading="לקבלת ייעוץ והצעת מחיר" />
+          </div>
+        </div>
+      </section>
+
+      {/* VALUES */}
+      <section className={styles.section}>
+        <div className="container">
+          <div className={styles.sectionHead}>
+            <h2>למה לבחור ב{site.brand}</h2>
+            <p>מצבה היא מעשה של כבוד וזיכרון. אנחנו כאן כדי לעשות זאת נכון.</p>
+          </div>
+          <div className={styles.values}>
+            {values.map((v) => (
+              <div key={v.title} className={styles.value}>
+                <div className={styles.valueIcon} aria-hidden="true">
+                  {v.icon}
+                </div>
+                <h3>{v.title}</h3>
+                <p>{v.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section className={`${styles.section} ${styles.sectionAlt}`}>
+        <div className="container">
+          <div className={styles.sectionHead}>
+            <h2>סוגי מצבות</h2>
+            <p>בחרו את סוג המצבה המתאים, ואנו נלווה אתכם בכל השאר.</p>
+          </div>
+          <div className={styles.grid}>
+            {services.map((s) => (
+              <Link
+                key={s.slug}
+                href={`/services/${s.slug}`}
+                className={styles.card}
+              >
+                <h3>{s.name}</h3>
+                <p>{s.short}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* AREAS */}
+      <section className={styles.section}>
+        <div className="container">
+          <div className={styles.sectionHead}>
+            <h2>אזורי שירות סביב ירושלים</h2>
+            <p>
+              הקמת מצבות בירושלים וביישובי הסביבה ברדיוס של עד כ-
+              {site.serviceRadiusKm} ק&quot;מ.
+            </p>
+          </div>
+          <div className={styles.areaGrid}>
+            {cities.map((c) => (
+              <Link
+                key={c.slug}
+                href={`/areas/${c.slug}`}
+                className={styles.area}
+              >
+                מצבות {c.inForm}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className={`${styles.section} ${styles.sectionAlt}`}>
+        <div className="container">
+          <Faq items={homeFaq} />
+        </div>
+      </section>
+
+      <JsonLd data={localBusiness()} />
+    </>
+  );
+}

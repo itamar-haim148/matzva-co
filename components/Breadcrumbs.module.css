@@ -1,0 +1,30 @@
+.wrap {
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--line);
+  font-size: 0.9rem;
+}
+.list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 12px 0;
+  margin: 0;
+  color: var(--muted);
+}
+.item:not(:last-child)::after {
+  content: "‹";
+  margin-inline-start: 6px;
+  color: var(--muted);
+}
+.link {
+  color: var(--primary);
+  text-decoration: none;
+}
+.link:hover {
+  text-decoration: underline;
+}
+.item span[aria-current] {
+  color: var(--ink-soft);
+  font-weight: 600;
+}

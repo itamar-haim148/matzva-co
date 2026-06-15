@@ -1,0 +1,149 @@
+# progress.txt — מצבה יהודית (matzva.co) — Ralph Loop Tracker
+# Status keys: [ ] todo  [~] in progress  [x] done  [!] blocked/needs user
+# Keyword focus: מצבות בירושלים + Service×Location grid (Jerusalem + 30km radius)
+# Stack: Next.js 16.2.9 + React 19.2.4 + TS strict + npm. Build dir: Documents/seo2/matzva-co
+# Design: pure CSS Modules + CSS variables. NO Tailwind/Shadcn/UI libs. RTL he. Font: Heebo (self-hosted via next/font).
+# HONESTY MANDATE: no fake stats / testimonials / certifications. Footer credit: "מופעל על ידי מצבות דוד".
+
+================================================================
+PHASE A — Research & source data (Ahrefs + scrape)
+[x] A1  Scrape matzva.co for real contact + services + areas (WebFetch)
+[x] A2  Playwright installed + scraped matzevotdavid.co.il & matzva.co
+        (scripts/scrape-provider.mjs -> scripts/_provider-research.json). Found real
+        price anchors (₪1,920-₪7,220) + content sections; saved to keyword-map.json.
+[~] A3  Ahrefs: user wants BROWSER only. Browser not logged in (app->marketing redirect);
+        cannot enter password (policy). One MCP overview call already gave real data.
+        TODO: user logs into Ahrefs in Chrome -> I pull expansion via browser.
+[x] A4  keyword-map.json built (real Ahrefs data: מצבות 1700, מצבה 1000, גילוי מצבה 350,
+        מצבות מחירים 300, מצבה זוגית 250, מצבות בירושלים 100, KD mostly 0)
+[x] A5  Competitor SERP mapped via Playwright headless (scripts/serp-research.mjs):
+        matzeva.co.il, cemetery.org.il, moreshetmazevot, msegev, headstone, matzevot-is,
+        gravez, midrag. Insight: competitors lead with price/מחירון/קטלוג -> saved to keyword-map.json
+NOTE: headed Playwright impossible in exec env (spawn UNKNOWN, no desktop); headless works.
+      Ahrefs login expansion still needs user to run scripts/ahrefs-session.mjs locally.
+[x] A6  URL taxonomy decided: ASCII slugs (Hebrew breaks export); keyword in title/H1/body
+
+PHASE B — Scaffold & RTL foundation
+[x] B1  Node + npm installed; Next.js 16 scaffolded (TS, app router, no tailwind)
+[x] B2  RTL config (dir="rtl" lang="he") + Heebo font in root layout
+[x] B3  Global design tokens (CSS variables) + reset in globals.css
+[x] B4  Base metadata / metadataBase / viewport (title template, OG, robots)
+
+PHASE C — Data + Supabase (leads, cities, services, qa)
+[x] C1  Static data layer: data/services.ts (8), data/cities.ts (16) -> drives grid
+[x] C2  Supabase schema (supabase/migrations/0001_init.sql: leads, appointments, services, cities, qa + RLS)
+[x] C3  Supabase client lib/supabase.ts (env-gated, returns null if unset)
+[x] C4  Lead insert in app/actions.ts (inserts when configured, else logs)
+[x] C5  Migration SQL file written; run once on Supabase (see DEPLOY.md)
+[!] C-todo  Needs SUPABASE_URL + SERVICE_ROLE_KEY in env to actually persist
+
+PHASE D — Design system (flat, elegant, no libs)
+[x] D1  Layout primitives: .container + section styles
+[x] D2  Button (primary / ghost / whatsapp / accent)
+[x] D3  Header (logo + nav + click-to-call)  [TODO: mobile menu]
+[x] D4  Footer (NAP, areas, legal links, provider credit)
+[x] D5  Card, Breadcrumbs (+ BreadcrumbList schema), CtaBand, Content layout module
+[~] D6  Accessibility: skip-link, focus-visible, reduced-motion, aria, labelled form; full AA audit pending
+[x] D7  Accessibility declaration page /accessibility (noindex)
+[x] D8  Legal pages /terms (terms + privacy, non-binding)
+
+PHASE E — Programmatic BOFU engine (200+ pages)   [build OK: 158 static pages]
+[x] E1  Route: /services/[service]/[city] + generateStaticParams (128 pages)
+[x] E2  Static prerender (SSG) — optimal CWV; chose static over use cache (KISS)
+[x] E3  Copy generator lib/content.ts (5 lead variants + body + price + FAQ)
+[x] E4  Service + LocalBusiness + BreadcrumbList + FAQPage JSON-LD per page
+[x] E5  Internal linking (nearby cities + other services + hubs)
+[x] E6  Service hub /services/[service] (8) + index /services
+[x] E7  City hub /areas/[city] (16) + index /areas
+NOTE: routes use ASCII slugs — Hebrew route segments crash Next static export
+  (btoa InvalidCharacterError). Hebrew keyword lives in titles/H1/breadcrumbs/body.
+
+PHASE F — Articles (TOFU/MOFU/BOFU via MDX)
+[x] F1  MDX setup (next-mdx-remote/rsc + gray-matter) + article layout
+[x] F2  Article frontmatter + index /articles + detail /articles/[slug] + Article schema
+[x] F3-F8  60 genuine Hebrew articles, ALL >=1000 words INCL Q&A (content/articles/*.mdx)
+        batches 1-3 (36) + Ralph-Loop Workflow batch (24, write->verify->fix, 0 short).
+        QA gate scripts/check-articles.mjs: 60/60 pass (1031-1538w, MDX-safe, FAQ each).
+
+PHASE E UPDATE: cities 16->25, services 8->9 (+אנדרטאות) => grid now 9x25 = 225 BOFU pages.
+  + price anchors (site.config priceFrom 1920 + priceNote) on grid + service hubs.
+  Total build: 332 static pages. Build EXIT=0, smoke test green.
+
+PHASE G — FAQ engine + FAQPage schema
+[x] G1  FAQ data model (QA type in lib/schema.ts) + generator lib/content.ts
+[x] G2  FAQ component + accessible <details> accordion
+[x] G3  FAQPage JSON-LD on home + every grid/service/city page
+
+PHASE H — Conversion tracks
+[x] H1  Lead form (name + phone + address) + server action (validation + honeypot)
+[x] H2  Floating animated WhatsApp button (CSS pulse, reduced-motion safe)
+[x] H3  Floating sticky call button (click-to-call)
+[x] H4  Thank-you state + inline validation + source_path + Supabase persist
+[x] H5  GTM hook components/Analytics.tsx (env-gated NEXT_PUBLIC_GTM_ID)
+
+PHASE I — SEO technicals
+[x] I1  app/sitemap.ts (all 177 routes incl. grid + articles)
+[x] I2  app/robots.ts (+ sitemap ref + host)
+[x] I3  OpenGraph image (branded public/og.svg) wired to metadata + schema
+[x] I4  app/llms.txt/route.ts (generated from live data)
+[x] I5  Canonicals per page; lang=he-IL via html lang + og locale
+[~] I6  CWV: fully static + self-hosted font + no JS libs; field-test after deploy
+
+PHASE J — Images
+[x] J1  Pexels ingestion script scripts/ingest-images.mjs (needs PEXELS_API_KEY)
+[x] J2  EXIF/metadata stripped + webp/avif output via sharp (in the script)
+[x] J3  Custom SVG: public/logo.svg + public/og.svg (dignified star/stone motif)
+[!] J-todo  Run the script to pull real dignified photos before launch
+
+PHASE K — Deploy
+[x] K1  Dockerfile (multi-stage, Next standalone) + .dockerignore
+[x] K2  next.config output:standalone + .env.example + DEPLOY.md (Coolify guide)
+[ ] K3  Domain + GSC validation  (do on the live server)
+[ ] K4  Submit sitemap          (do after K3)
+
+PHASE L — Final QA
+[x] L1  Build VERIFIED 177 pages + runtime smoke test (grid/hub/area/article/sitemap/robots/llms all 200)
+
+================================================================
+SESSION LOG
+2026-06-14: Foundation built + build VERIFIED (npm run build OK, served on :3100,
+  HTML confirmed: dir=rtl/lang=he, H1, LocalBusiness+FAQPage JSON-LD, wa.me+tel,
+  provider credit, Heebo self-hosted). Files: app/(layout,page,actions,globals,
+  page.module), site.config.ts, data/(services,cities), lib/schema.ts,
+  components/(Header,Footer,FloatingCTA,Button,LeadForm,Faq,JsonLd).
+  NOTE: dev/start must be tested on 127.0.0.1 (localhost->IPv6 fails on this box).
+2026-06-14 (cont.): FULL BUILD-OUT. Phases C,D,E,F(batch),G,H,I,J,K,L done.
+  177 static pages (128 grid + 8 svc hubs + 16 city hubs + 12 articles + indexes
+  + sitemap/robots/llms). Added Supabase (schema+client+lead insert, env-gated),
+  GTM (env-gated), Dockerfile+standalone+DEPLOY.md, Pexels EXIF-strip script,
+  branded SVG og/logo. Build + runtime smoke test all green.
+REMAINING (need user/server): Ahrefs keyword map (A3-A4, browser login),
+  Supabase keys, GTM id, run image script for real photos, deploy+GSC (K3-K4),
+  scale articles toward 200 in further batches.
+2026-06-14 (cont.2): Ahrefs keyword research (1 MCP call, real data) -> keyword-map.json.
+  RULE: every article >=1000 words INCLUDING Q&A. Expanded all 12 originals + wrote 12
+  new keyword-driven articles = 24 total, all >=1000w. Build EXIT=0, 189 static pages.
+  Ahrefs going forward: BROWSER ONLY per user; needs user to log into Ahrefs in Chrome.
+NEXT: more article batches to grow toward 200 (each >=1000w incl Q&A); browser Ahrefs
+  expansion once logged in; then Supabase/GTM/images/deploy.
+2026-06-14 (cont.3): Playwright installed + used (provider scrape A2, SERP competitors A5).
+  keyword-map.json enriched (competitors + provider price anchors). Added אנדרטאות service
+  + price anchors. Ralph-Loop Workflow wrote+verified 24 articles -> 60 total, all >=1000w
+  incl Q&A (QA gate 60/60). 332 static pages, build EXIT=0, smoke green.
+  EVERYTHING DONE EXCEPT DEPLOY (K3-K4) + Ahrefs deep expansion (needs user local login run).
+  Headed Playwright impossible in exec env; headless works.
+
+================================================================
+OPEN DECISIONS / BLOCKERS
+[!] Rotate the Ahrefs password (was pasted in plaintext).
+[!] Confirm whether business address shown should be Bat Yam HQ or a Jerusalem presence (SEO focus is Jerusalem).
+[!] GTM / GA4 container ID needed for H5.
+[!] Supabase self-hosted URL + anon/service keys needed for Phase C.
+
+REAL DATA (from matzva.co, verified):
+  brand:     מצבה יהודית
+  phone:     0723311061
+  whatsapp:  054-6272421  (intl 972546272421)
+  address:   שמעון הבורסקאי 4, בת ים
+  services:  יחיד, סנהדרין, כפולה/זוגית, מכפלה, אבן, גרניט, משפחתית, מעוצבות, אנדרטאות
+  areas:     ירושלים + מרכז, רחובות, פתח תקווה, אשקלון, ראשון לציון, צפון

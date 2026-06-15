@@ -1,0 +1,93 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: saturate(1.1) blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 70px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.logoMark {
+  color: var(--accent);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+.logoText {
+  font-weight: 800;
+  font-size: 1.3rem;
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  gap: 4px;
+  margin-inline-start: auto;
+  flex-wrap: wrap;
+}
+.navLink {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+}
+.navLink:hover {
+  background: var(--primary-tint);
+  color: var(--primary);
+}
+
+.call {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  background: var(--primary);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  white-space: nowrap;
+}
+.call:hover {
+  background: var(--primary-dark);
+}
+.callIcon {
+  font-size: 1.2rem;
+}
+.callLabel {
+  display: block;
+  font-size: 0.72rem;
+  opacity: 0.85;
+  line-height: 1.1;
+}
+.callNum {
+  display: block;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+@media (max-width: 860px) {
+  .nav {
+    display: none;
+  }
+}
+@media (max-width: 460px) {
+  .callLabel {
+    display: none;
+  }
+  .logoText {
+    font-size: 1.1rem;
+  }
+}

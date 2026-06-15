@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" direction="rtl">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2f4858"/>
+      <stop offset="1" stop-color="#233743"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="10" fill="#9a7b4f"/>
+  <g fill="none" stroke="#9a7b4f" stroke-width="6" opacity="0.85" transform="translate(170,315)">
+    <polygon points="0,-70 60,35 -60,35"/>
+    <polygon points="0,70 60,-35 -60,-35"/>
+  </g>
+  <text x="1030" y="250" text-anchor="end" font-family="Heebo, Arial, sans-serif" font-size="92" font-weight="800" fill="#ffffff">מצבה יהודית</text>
+  <text x="1030" y="330" text-anchor="end" font-family="Heebo, Arial, sans-serif" font-size="44" font-weight="600" fill="#cdd8dd">הקמת מצבות בירושלים והסביבה</text>
+  <text x="1030" y="395" text-anchor="end" font-family="Heebo, Arial, sans-serif" font-size="34" font-weight="400" fill="#9fb1ba">בעבודת אמן · על פי ההלכה · בכבוד הראוי</text>
+  <text x="1030" y="500" text-anchor="end" font-family="Heebo, Arial, sans-serif" font-size="34" font-weight="700" fill="#9a7b4f">072-3311061</text>
+</svg>

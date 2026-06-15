@@ -1,0 +1,85 @@
+{
+  "_meta": {
+    "market": "Israeli headstone / matzeva market",
+    "country": "il",
+    "primaryTarget": "מצבות בירושלים",
+    "source": "Ahrefs Keywords Explorer (overview), 2026-06-14",
+    "note": "Volumes are low but intent is highly commercial with high CPC — each lead is valuable. Further long-tail expansion to be pulled via browser once logged in.",
+    "monetaryUnit": "cpc in USD cents"
+  },
+  "seeds": [
+    { "keyword": "מצבות", "volume": 1700, "difficulty": 36, "cpc": 140, "intent": ["informational", "commercial"] },
+    { "keyword": "מצבה", "volume": 1000, "difficulty": 9, "cpc": 160, "intent": ["informational"] },
+    { "keyword": "גילוי מצבה", "volume": 350, "difficulty": 0, "cpc": 140, "intent": ["informational"] },
+    { "keyword": "מצבות מחירים", "volume": 300, "difficulty": 0, "cpc": 80, "intent": ["informational", "commercial"] },
+    { "keyword": "מצבה זוגית", "volume": 250, "difficulty": 0, "cpc": 160, "intent": ["informational", "commercial"] },
+    { "keyword": "מחיר מצבה", "volume": 150, "difficulty": 0, "cpc": 50, "intent": ["informational"] },
+    { "keyword": "מצבה משפחתית", "volume": 150, "difficulty": 0, "cpc": 180, "intent": ["informational", "commercial"] },
+    { "keyword": "מצבות בתל אביב", "volume": 150, "difficulty": 0, "cpc": 350, "intent": ["commercial", "local"] },
+    { "keyword": "נוסח מצבה", "volume": 150, "difficulty": 0, "cpc": 2, "parent": "מה כותבים על מצבה", "intent": ["informational"] },
+    { "keyword": "מצבות בירושלים", "volume": 100, "difficulty": 0, "cpc": 80, "intent": ["commercial", "local"] },
+    { "keyword": "מצבות גרניט", "volume": 90, "difficulty": 0, "cpc": 180, "intent": ["commercial"] },
+    { "keyword": "שיש למצבות", "volume": 80, "cpc": 70, "intent": ["commercial"] },
+    { "keyword": "מצבה לקבר", "volume": 50, "cpc": 150 },
+    { "keyword": "מצבות בבית שמש", "volume": 40 },
+    { "keyword": "הקמת מצבה", "volume": 30, "difficulty": 0, "cpc": 200, "parent": "גילוי מצבה" },
+    { "keyword": "מצבת יחיד", "volume": 20, "cpc": 250 }
+  ],
+  "programmaticGrid": {
+    "pattern": "/services/{service}/{city}",
+    "headlinePattern": "הקמת {serviceName} {cityInForm}",
+    "services": ["yachid", "zugit", "mishpachtit", "sanhedrin", "machpela", "granite", "even", "meutzevet"],
+    "cities": ["jerusalem", "mevaseret-tzion", "motza", "givat-zeev", "maale-adumim", "har-adar", "abu-gosh", "tzur-hadassah", "beitar-illit", "beit-shemesh", "gush-etzion", "efrat", "alon-shvut", "neve-daniel", "kiryat-yearim", "beit-zait"],
+    "rationale": "Most {service}×{city} long-tails show ~0 volume individually, but capture aggregate long-tail + local intent per the BOFU strategy. High-volume anchors: מצבות בירושלים, מצבה זוגית, מצבה משפחתית, מצבות גרניט, מצבות בבית שמש."
+  },
+  "contentPriorities": [
+    { "topic": "מחירי מצבות / כמה עולה מצבה", "covered": "article matzeva-price-jerusalem + grid price factors", "priority": "high" },
+    { "topic": "גילוי מצבה / הקמת מצבה (טקס)", "covered": "article giluy-matzeva-ceremony", "priority": "high" },
+    { "topic": "נוסח / מה כותבים על מצבה", "covered": "article matzeva-inscription-text", "priority": "high", "gap": "add dedicated 'מה כותבים על מצבה' article (parent topic)" },
+    { "topic": "מצבה זוגית", "covered": "service hub + grid + article double-matzeva-guide", "priority": "high" },
+    { "topic": "מצבות גרניט / שיש / אבן", "covered": "service hubs + article granite-vs-jerusalem-stone", "priority": "medium" },
+    { "topic": "מצבה משפחתית", "covered": "service hub + grid", "priority": "medium", "gap": "add family-matzeva article" }
+  ],
+  "opportunities": [
+    "מצבות בתל אביב has the highest local CPC ($3.50) — outside the Jerusalem radius; consider a separate landing only if the business serves it.",
+    "Brand 'מצבות דוד' has ~0 volume — provider only; keep to footer credit.",
+    "Low difficulty (KD 0) across the board => realistic to rank with solid on-page + internal linking."
+  ],
+  "competitorsSerp": {
+    "source": "Playwright headless Bing SERP (scripts/serp-research.mjs), query 'מצבות בירושלים', 2026-06-14",
+    "topOrganic": [
+      { "domain": "matzeva.co.il", "title": "אתר מצבות ישראל" },
+      { "domain": "cemetery.org.il", "title": "מחירון מצבות מעודכן 2026 — מצבות גן עדן (החל מ-2500 ₪)" },
+      { "domain": "moreshetmazevot.co.il", "title": "מצבות מעוצבות החל מ-2500 ש\"ח | קטלוג 2026" },
+      { "domain": "gravez.me", "title": "GRAVEZ" },
+      { "domain": "msegev.co.il", "title": "שגב מצבות — בהתאמה אישית במחירים משתלמים" },
+      { "domain": "headstone.co.il", "title": "שלהבת מצבות קבורה — 25 שנות ניסיון" },
+      { "domain": "matzevot-is.co.il", "title": "מצבות — בנייה והקמת מצבות בכל סוגי האבנים" },
+      { "domain": "midrag.co.il", "title": "מצבות — כל המידע והמחירים (directory)" }
+    ],
+    "insights": [
+      "Competitors lead hard with PRICE ('מחירון', 'החל מ-2,500 ₪') and 'קטלוג 2026' / 'מצבות מעוצבות'.",
+      "Experience signals common ('25 שנות ניסיון').",
+      "Recommendation: add honest 'החל מ-' price anchors + a price/קטלוג angle; emphasize real experience only (honesty mandate)."
+    ]
+  },
+  "providerResearch": {
+    "source": "Playwright scrape (scripts/scrape-provider.mjs), 2026-06-14",
+    "matzva_co": {
+      "realStartingPrices_ILS": "anchors shown on the brand's own site: 1920, 4000, 4020, 5200, 7220 (yachid / sanhedrin / machpela / machpela-lerochav / zugit — exact mapping to verify before publishing)",
+      "contentSections": ["היסטוריה של מצבות יהודיות", "על פי הקבלה", "תחזוקה וטיפול", "כיצד לבחור את המצבה הנכונה", "מתי להכין מצבה", "מה כותבים על מצבה", "איך משיגים מצבה"],
+      "serviceSlugsLive": ["אבן טבעית", "מצבות אבן", "גרניט", "זוגיות", "לזוג", "כפולות", "אחד על השני", "משפחתית", "מעוצבות", "מיוחדות", "יפות", "אנדרטאות"],
+      "areaPagesLive": ["ירושלים", "מרכז", "רחובות", "פתח תקווה", "אשקלון", "ראשון לציון", "צפון"]
+    },
+    "matzevotdavid_co_il": {
+      "tagline": "מצבות דוד בירושלים והסביבה — 25 שנה",
+      "phone": "+972546475768",
+      "hasArticles": true
+    },
+    "actionItems": [
+      "Consider adding 'אנדרטאות' (monuments) as a 9th service.",
+      "Optional: add honest 'החל מ-' price anchors to BOFU pages (user to confirm current prices).",
+      "Topics confirmed: history/kabbalah/maintenance/choosing/timing/inscription all align with written articles."
+    ]
+  }
+}

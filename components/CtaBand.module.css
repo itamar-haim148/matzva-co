@@ -1,0 +1,26 @@
+.band {
+  background: var(--primary);
+  color: #fff;
+}
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-block: 36px;
+}
+.title {
+  color: #fff;
+  font-size: 1.6rem;
+}
+.text {
+  color: #d8e0e5;
+  margin-top: 6px;
+  max-width: 52ch;
+}
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
