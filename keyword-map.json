@@ -42,7 +42,7 @@
   ],
   "opportunities": [
     "מצבות בתל אביב has the highest local CPC ($3.50) — outside the Jerusalem radius; consider a separate landing only if the business serves it.",
-    "Brand 'מצבות דוד' has ~0 volume — provider only; keep to footer credit.",
+    "Provider brand has ~0 search volume — internal only, no public credit.",
     "Low difficulty (KD 0) across the board => realistic to rank with solid on-page + internal linking."
   ],
   "competitorsSerp": {
@@ -71,8 +71,8 @@
       "serviceSlugsLive": ["אבן טבעית", "מצבות אבן", "גרניט", "זוגיות", "לזוג", "כפולות", "אחד על השני", "משפחתית", "מעוצבות", "מיוחדות", "יפות", "אנדרטאות"],
       "areaPagesLive": ["ירושלים", "מרכז", "רחובות", "פתח תקווה", "אשקלון", "ראשון לציון", "צפון"]
     },
-    "matzevotdavid_co_il": {
-      "tagline": "מצבות דוד בירושלים והסביבה — 25 שנה",
+    "provider_site": {
+      "tagline": "provider site — 25 years (internal reference only)",
       "phone": "+972546475768",
       "hasArticles": true
     },

@@ -3,7 +3,7 @@
 # Keyword focus: מצבות בירושלים + Service×Location grid (Jerusalem + 30km radius)
 # Stack: Next.js 16.2.9 + React 19.2.4 + TS strict + npm. Build dir: Documents/seo2/matzva-co
 # Design: pure CSS Modules + CSS variables. NO Tailwind/Shadcn/UI libs. RTL he. Font: Heebo (self-hosted via next/font).
-# HONESTY MANDATE: no fake stats / testimonials / certifications. Footer credit: "מופעל על ידי מצבות דוד".
+# HONESTY MANDATE: no fake stats / testimonials / certifications. (Provider credit removed per user request 2026-06-15.)
 
 ================================================================
 PHASE A — Research & source data (Ahrefs + scrape)
@@ -95,11 +95,14 @@ PHASE J — Images
 [x] J3  Custom SVG: public/logo.svg + public/og.svg (dignified star/stone motif)
 [!] J-todo  Run the script to pull real dignified photos before launch
 
-PHASE K — Deploy
+PHASE K — Deploy  [LIVE on https://matzva.co]
 [x] K1  Dockerfile (multi-stage, Next standalone) + .dockerignore
 [x] K2  next.config output:standalone + .env.example + DEPLOY.md (Coolify guide)
-[ ] K3  Domain + GSC validation  (do on the live server)
-[ ] K4  Submit sitemap          (do after K3)
+[x] K3  DEPLOYED via Coolify API. repo github.com/itamar-haim148/matzva-co (public),
+        app uuid uj849ye992rqhdyxjehuvi6k, project matzva.co (g13birjc...), server localhost,
+        dockerfile build, :3000, fqdn https://matzva.co. DNS via Cloudflare -> 109.199.109.174.
+        Verified: homepage 200 (H1, LocalBusiness, Heebo), grid/area/article/sitemap/robots/llms all 200.
+[ ] K4  Submit sitemap to Google Search Console (needs user's GSC/Google auth)
 
 PHASE L — Final QA
 [x] L1  Build VERIFIED 177 pages + runtime smoke test (grid/hub/area/article/sitemap/robots/llms all 200)

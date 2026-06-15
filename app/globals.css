@@ -7,7 +7,7 @@
   /* Palette — warm stone + dignified slate, low saturation */
   --ink: #23272c;
   --ink-soft: #4a525a;
-  --muted: #717b84;
+  --muted: #5f6770; /* AA: passes 4.5:1 on white */
 
   --bg: #ffffff;
   --bg-soft: #f7f5f1; /* warm sand */
@@ -18,11 +18,11 @@
   --primary-dark: #233743;
   --primary-tint: #eef2f4;
 
-  --accent: #9a7b4f; /* muted bronze, used sparingly */
-  --accent-dark: #7f6541;
+  --accent: #8a6a3d; /* deep bronze — white text passes AA (5:1) */
+  --accent-dark: #6f5430;
 
-  --whatsapp: #25d366;
-  --whatsapp-dark: #1da851;
+  --whatsapp: #0c7c3c; /* darkened green — white text passes AA */
+  --whatsapp-dark: #0a6833;
 
   --ok: #2f7d4f;
   --err: #b23a3a;

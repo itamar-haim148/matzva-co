@@ -5,8 +5,6 @@
 
 export const site = {
   brand: "מצבה יהודית",
-  legalNote: "מופעל על ידי מצבות דוד", // respectful footer credit only
-  provider: "מצבות דוד",
   domain: (process.env.NEXT_PUBLIC_SITE_URL || "https://matzva.co").replace(
     /\/$/,
     ""

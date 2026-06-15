@@ -5,6 +5,8 @@ import { site, telLink } from "@/site.config";
 const nav = [
   { href: "/", label: "בית" },
   { href: "/services", label: "סוגי מצבות" },
+  { href: "/gallery", label: "גלריה" },
+  { href: "/pricing", label: "מחירון" },
   { href: "/areas", label: "אזורי שירות" },
   { href: "/articles", label: "מאמרים" },
   { href: "/contact", label: "צור קשר" },

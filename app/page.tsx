@@ -5,6 +5,8 @@ import { services } from "@/data/services";
 import { cities } from "@/data/cities";
 import Button from "@/components/Button";
 import LeadForm from "@/components/LeadForm";
+import Gallery from "@/components/Gallery";
+import PriceList from "@/components/PriceList";
 import Faq from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
 import { localBusiness } from "@/lib/schema";
@@ -165,8 +167,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* GALLERY */}
+      <section className={styles.section}>
+        <div className="container">
+          <div className={styles.sectionHead}>
+            <h2>גלריית מצבות</h2>
+            <p>דוגמאות מעבודות שביצענו — בעבודת אמן ובכבוד הראוי.</p>
+          </div>
+          <Gallery limit={8} />
+          <p style={{ textAlign: "center", marginTop: 24 }}>
+            <Button href="/gallery" variant="ghost" size="lg">
+              לגלריה המלאה
+            </Button>
+          </p>
+        </div>
+      </section>
+
+      {/* PRICING */}
       <section className={`${styles.section} ${styles.sectionAlt}`}>
+        <div className="container">
+          <div className={styles.sectionHead}>
+            <h2>מחירון מצבות</h2>
+            <p>מחירי &quot;החל מ-&quot; להמחשה, בשקיפות מלאה.</p>
+          </div>
+          <PriceList />
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className={styles.section}>
         <div className="container">
           <Faq items={homeFaq} />
         </div>

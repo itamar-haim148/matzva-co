@@ -61,6 +61,16 @@ export default function Footer() {
           <h2 className={styles.h}>מידע</h2>
           <ul className={styles.list}>
             <li>
+              <Link href="/gallery" className={styles.link}>
+                גלריית מצבות
+              </Link>
+            </li>
+            <li>
+              <Link href="/pricing" className={styles.link}>
+                מחירון
+              </Link>
+            </li>
+            <li>
               <Link href="/articles" className={styles.link}>
                 מאמרים ומדריכים
               </Link>
@@ -87,7 +97,7 @@ export default function Footer() {
       <div className={styles.bottom}>
         <div className="container">
           <p>
-            © {year} {site.brand}. כל הזכויות שמורות. · {site.legalNote}
+            © {year} {site.brand}. כל הזכויות שמורות.
           </p>
         </div>
       </div>
