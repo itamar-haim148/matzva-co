@@ -13,10 +13,8 @@ export function localBusiness() {
     image: `${site.domain}/og.svg`,
     address: {
       "@type": "PostalAddress",
-      streetAddress: site.address.street,
-      addressLocality: site.address.city,
-      addressRegion: site.address.region,
-      addressCountry: site.address.country,
+      addressLocality: site.primaryCity,
+      addressCountry: site.country,
     },
     areaServed: { "@type": "City", name: site.primaryCity },
     priceRange: "₪₪",

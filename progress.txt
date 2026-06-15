@@ -104,6 +104,15 @@ PHASE K — Deploy  [LIVE on https://matzva.co]
         Verified: homepage 200 (H1, LocalBusiness, Heebo), grid/area/article/sitemap/robots/llms all 200.
 [ ] K4  Submit sitemap to Google Search Console (needs user's GSC/Google auth)
 
+PHASE M — Post-launch fixes (2026-06-15)
+[x] Removed all "מצבות דוד" mentions (site.config legalNote/provider + Footer credit + scrubbed docs)
+[x] Gallery: 13 real work photos (Playwright scrape matzevotdavid/matzva, EXIF-stripped webp via sharp)
+        -> data/gallery.ts + Gallery.tsx + /gallery page + homepage section + nav/footer links
+[x] Pricing: data/pricing.ts (real "החל מ-" anchors ₪1,920-₪7,220) + PriceList.tsx + /pricing page + homepage section
+[x] Accessibility: fixed contrast (axe was: accent btn 3.94, whatsapp 1.98, muted text 4.31)
+        tokens -> --muted #5f6770, --accent #8a6a3d, --whatsapp #0c7c3c. Re-audit: 0 violations (WCAG AA).
+[x] Rebuilt 334 pages, pushed, redeployed (deploy xwh10...), verified live + a11y clean.
+
 PHASE L — Final QA
 [x] L1  Build VERIFIED 177 pages + runtime smoke test (grid/hub/area/article/sitemap/robots/llms all 200)
 
@@ -147,6 +156,6 @@ REAL DATA (from matzva.co, verified):
   brand:     מצבה יהודית
   phone:     0723311061
   whatsapp:  054-6272421  (intl 972546272421)
-  address:   שמעון הבורסקאי 4, בת ים
+  service-area: ירושלים והסביבה (no public street address per user request 2026-06-15)
   services:  יחיד, סנהדרין, כפולה/זוגית, מכפלה, אבן, גרניט, משפחתית, מעוצבות, אנדרטאות
   areas:     ירושלים + מרכז, רחובות, פתח תקווה, אשקלון, ראשון לציון, צפון

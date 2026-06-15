@@ -18,16 +18,14 @@ export const site = {
   shortDescription:
     "הקמת מצבות בירושלים ובכל יישובי האזור, בעבודת אמן ובכבוד הראוי, על פי המסורת וההלכה היהודית. ליווי אישי מרגע הפנייה ועד הקמת המצבה.",
 
-  // NAP — verified from matzva.co
+  // Contact
   phone: { display: "072-3311061", tel: "+97223311061" },
   whatsapp: { display: "054-6272421", intl: "972546272421" },
   email: "office@matzva.co", // verify before launch
-  address: {
-    street: "שמעון הבורסקאי 4",
-    city: "בת ים",
-    region: "מרכז",
-    country: "IL",
-  },
+
+  // Service-area business (no public street address)
+  serviceArea: "ירושלים והסביבה",
+  country: "IL",
 
   // Primary SEO geography
   primaryCity: "ירושלים",

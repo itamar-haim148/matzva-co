@@ -17,10 +17,12 @@ export default function Header() {
     <header className={styles.header}>
       <div className={`container ${styles.inner}`}>
         <Link href="/" className={styles.logo} aria-label={`${site.brand} — דף הבית`}>
-          <span className={styles.logoMark} aria-hidden="true">
-            ✡
-          </span>
-          <span className={styles.logoText}>{site.brand}</span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.svg"
+            alt={`${site.brand} — מצבות בירושלים והסביבה`}
+            className={styles.logoImg}
+          />
         </Link>
 
         <nav className={styles.nav} aria-label="ניווט ראשי">

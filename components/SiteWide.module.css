@@ -1,0 +1,31 @@
+.band {
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+  padding-block: clamp(36px, 6vw, 64px);
+  margin-top: 48px;
+}
+.intro {
+  max-width: 70ch;
+  margin: 0 auto 28px;
+  text-align: center;
+}
+.h {
+  margin-bottom: 12px;
+}
+.intro p {
+  color: var(--ink-soft);
+}
+.sub {
+  margin: 32px 0 16px;
+  text-align: center;
+}
+.more {
+  text-align: center;
+  margin: 16px 0 8px;
+}
+.link {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

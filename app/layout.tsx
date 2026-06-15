@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
 import Analytics from "@/components/Analytics";
+import SiteWide from "@/components/SiteWide";
 
 const heebo = Heebo({
   subsets: ["hebrew", "latin"],
@@ -51,6 +52,7 @@ export default function RootLayout({
         </a>
         <Header />
         <main id="main">{children}</main>
+        <SiteWide />
         <Footer />
         <FloatingCTA />
       </body>

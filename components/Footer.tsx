@@ -25,9 +25,7 @@ export default function Footer() {
                 {site.whatsapp.display}
               </a>
             </li>
-            <li>
-              {site.address.street}, {site.address.city}
-            </li>
+            <li>אזור שירות: {site.serviceArea}</li>
           </ul>
         </div>
 

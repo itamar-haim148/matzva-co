@@ -5,14 +5,13 @@ import c from "@/components/Content.module.css";
 import { services } from "@/data/services";
 import { cities, cityBySlug } from "@/data/cities";
 import { site } from "@/site.config";
-import { nearbyCities } from "@/lib/content";
+import { nearbyCities, cityParagraphs, cityHubFaq } from "@/lib/content";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import LeadForm from "@/components/LeadForm";
 import Faq from "@/components/Faq";
 import CtaBand from "@/components/CtaBand";
 import JsonLd from "@/components/JsonLd";
 import { localBusiness } from "@/lib/schema";
-import type { QA } from "@/lib/schema";
 
 type Params = { city: string };
 
@@ -53,20 +52,7 @@ export default async function CityHub({
       ? "בלב ירושלים"
       : `במרחק של כ-${ct.approxKmFromJerusalem} ק"מ מירושלים`;
 
-  const faq: QA[] = [
-    {
-      q: `האם אתם מקימים מצבות ${ct.inForm}?`,
-      a: `כן. אנו מקימים מצבות ${ct.inForm} ובכל אזור ירושלים, בכל סוגי האבן והעיצוב, בכפוף לכללי בית העלמין המקומי.`,
-    },
-    {
-      q: `אילו סוגי מצבות זמינים ${ct.inForm}?`,
-      a: `כל הסוגים: מצבת יחיד, זוגית, משפחתית, סנהדרין, גרניט, אבן טבעית ומצבות מעוצבות.`,
-    },
-    {
-      q: `כיצד מתאמים הקמת מצבה ${ct.inForm}?`,
-      a: `מתחילים בשיחה קצרה, בודקים את פרטי החלקה ובית העלמין, ומוסרים הצעת מחיר ולוח זמנים. השאירו פרטים ונחזור אליכם.`,
-    },
-  ];
+  const faq = cityHubFaq(ct);
 
   const trail = [
     { name: "בית", path: "/" },
@@ -88,6 +74,11 @@ export default async function CityHub({
 
         <div className={c.layout}>
           <article className={c.prose}>
+            <h2>הקמת מצבות {ct.inForm}</h2>
+            {cityParagraphs(ct).map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+
             <h2>סוגי מצבות {ct.inForm}</h2>
             <p>בחרו את סוג המצבה לקבלת מידע ממוקד ולפנייה מהירה:</p>
             <ul className={c.linkGrid}>

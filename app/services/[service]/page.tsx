@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import c from "@/components/Content.module.css";
 import { services, serviceBySlug } from "@/data/services";
 import { cities } from "@/data/cities";
+import { serviceParagraphs, serviceHubFaq } from "@/lib/content";
 import { site, priceFromText } from "@/site.config";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import LeadForm from "@/components/LeadForm";
@@ -11,7 +12,6 @@ import Faq from "@/components/Faq";
 import CtaBand from "@/components/CtaBand";
 import JsonLd from "@/components/JsonLd";
 import { serviceSchema } from "@/lib/schema";
-import type { QA } from "@/lib/schema";
 
 type Params = { service: string };
 
@@ -47,20 +47,7 @@ export default async function ServiceHub({
   const s = serviceBySlug(service);
   if (!s) notFound();
 
-  const faq: QA[] = [
-    {
-      q: `מה כוללת הקמת ${s.name}?`,
-      a: `${s.intro}`,
-    },
-    {
-      q: `היכן ניתן להקים ${s.name}?`,
-      a: `אנו מקימים ${s.name} בירושלים ובכל יישובי הסביבה ברדיוס של עד כ-${site.serviceRadiusKm} ק"מ.`,
-    },
-    {
-      q: `כיצד מקבלים הצעת מחיר?`,
-      a: `השאירו פרטים או חייגו אלינו, ונחזור אליכם עם הצעת מחיר שקופה ומפורטת.`,
-    },
-  ];
+  const faq = serviceHubFaq(s);
 
   const trail = [
     { name: "בית", path: "/" },
@@ -82,6 +69,11 @@ export default async function ServiceHub({
 
         <div className={c.layout}>
           <article className={c.prose}>
+            <h2>על {s.name}</h2>
+            {serviceParagraphs(s).map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+
             <h2>בחרו את היישוב שלכם</h2>
             <p>
               אנו מקימים {s.name} בירושלים ובכל יישובי האזור. בחרו יישוב למידע

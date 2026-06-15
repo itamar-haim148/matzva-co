@@ -7,7 +7,7 @@ import { cities, cityBySlug } from "@/data/cities";
 import { site, priceFromText } from "@/site.config";
 import {
   gridLead,
-  gridBody,
+  gridSections,
   gridFaq,
   processSteps,
   priceFactors,
@@ -81,12 +81,16 @@ export default async function GridPage({
 
         <div className={c.layout}>
           <article className={c.prose}>
-            <h2>
-              {s.name} {ct.inForm} — מה חשוב לדעת
-            </h2>
-            <p>{gridBody(s, ct)}</p>
+            {gridSections(s, ct).map((sec) => (
+              <section key={sec.heading}>
+                <h2>{sec.heading}</h2>
+                {sec.paragraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </section>
+            ))}
 
-            <h2>איך עובד התהליך</h2>
+            <h2>תהליך הקמת {s.name} {ct.inForm}</h2>
             <ol className={c.steps}>
               {processSteps.map((st, i) => (
                 <li key={st.title} className={c.step}>
