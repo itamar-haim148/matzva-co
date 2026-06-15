@@ -1,6 +1,6 @@
 "use server";
 
-import { getSupabase } from "@/lib/supabase";
+import { insertLead } from "@/lib/db";
 
 export type LeadState = {
   ok: boolean;
@@ -36,17 +36,16 @@ export async function submitLead(
   const sourcePath = (formData.get("source_path") as string) || null;
   const record = { name, phone, address, source_path: sourcePath };
 
-  const supabase = getSupabase();
-  if (supabase) {
-    const { error } = await supabase.from("leads").insert(record);
-    if (error) {
-      console.error("[LEAD] supabase insert failed:", error.message);
-      // Don't lose the lead — surface it in logs and still thank the user.
-      console.info("[LEAD:fallback]", record);
+  try {
+    const persisted = await insertLead(record);
+    if (!persisted) {
+      // No DB configured — record server-side so submissions aren't lost.
+      console.info("[LEAD]", { ...record, at: new Date().toISOString() });
     }
-  } else {
-    // No DB configured yet — record server-side so submissions aren't lost.
-    console.info("[LEAD]", { ...record, at: new Date().toISOString() });
+  } catch (err) {
+    // Never lose a lead: log it even if the DB write fails.
+    console.error("[LEAD] db insert failed:", (err as Error).message);
+    console.info("[LEAD:fallback]", record);
   }
 
   return {

@@ -113,6 +113,19 @@ PHASE M — Post-launch fixes (2026-06-15)
         tokens -> --muted #5f6770, --accent #8a6a3d, --whatsapp #0c7c3c. Re-audit: 0 violations (WCAG AA).
 [x] Rebuilt 334 pages, pushed, redeployed (deploy xwh10...), verified live + a11y clean.
 
+PHASE N — Content depth + logo + removals (2026-06-15)
+[x] Logo: branded SVG (public/logo.svg) in header (tombstone+star+menorah+olive+bilingual).
+        User can drop their exact raster as public/logo.png and switch one line.
+[x] Removed address "שמעון הבורסקאי 4, בת ים" everywhere -> serviceArea "ירושלים והסביבה".
+[x] EVERY page >=1000 words (verified via local prod word-count): home 1308, service hub ~1048+,
+        grid ~1280+, city hub ~1030+, services idx 1048, areas idx 1027, gallery 1046, pricing 1130,
+        contact 1039, accessibility 1031, terms 1025, articles 2000+. (rich gridSections + hub paras
+        + page intros + reusable FAQ generators in lib/content.ts).
+[x] Homepage optimized for "מצבות בירושלים" (rich SEO section).
+[x] SiteWide band (components/SiteWide.tsx) on EVERY page: "מצבות בירושלים" link to homepage
+        + gallery(6) + full PriceList -> satisfies gallery+pricing+homepage-anchor on every page.
+[x] Rebuilt 334 pages, pushed (56d6cd2), redeployed, verified live (logo, removals, anchors, gallery, pricing).
+
 PHASE L — Final QA
 [x] L1  Build VERIFIED 177 pages + runtime smoke test (grid/hub/area/article/sitemap/robots/llms all 200)
 
