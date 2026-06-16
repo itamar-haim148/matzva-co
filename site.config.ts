@@ -33,7 +33,7 @@ export const site = {
 
   // Honest "starting from" price anchor (from the brand's own published prices).
   // Indicative only — confirm/update before launch.
-  priceFrom: 1920,
+  priceFrom: 2210,
   priceNote:
     'מחיר "החל מ-" הוא להמחשה בלבד ותלוי בסוג האבן, במידות, בעיצוב ובכיתוב וכן בדרישות בית העלמין. הצעת מחיר מדויקת ושקופה נמסרת בפנייה, ללא התחייבות.',
 } as const;

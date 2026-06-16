@@ -29,6 +29,13 @@ PHASE B — Scaffold & RTL foundation
 [x] B3  Global design tokens (CSS variables) + reset in globals.css
 [x] B4  Base metadata / metadataBase / viewport (title template, OG, robots)
 
+PHASE C-DONE (2026-06-15): DATABASE BUILT + LIVE.
+  Coolify Postgres "matzva-db" (uuid lsn0oeotsz0azn93424c653h) in matzva.co project,
+  internal-only on coolify network. Code switched supabase-js -> pg (lib/db.ts, ensureSchema
+  creates `leads` on first insert). app env DATABASE_URL set (internal url). Deployed.
+  VERIFIED end-to-end: submitted test lead via live /contact form -> row persisted in Postgres
+  (then deleted test row + disabled temporary public access). Lead form now truly saves leads.
+
 PHASE C — Data + Supabase (leads, cities, services, qa)
 [x] C1  Static data layer: data/services.ts (8), data/cities.ts (16) -> drives grid
 [x] C2  Supabase schema (supabase/migrations/0001_init.sql: leads, appointments, services, cities, qa + RLS)

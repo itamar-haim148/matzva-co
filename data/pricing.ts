@@ -6,11 +6,11 @@
 export type PriceRow = { serviceSlug: string; label: string; from: number | null };
 
 export const priceList: PriceRow[] = [
-  { serviceSlug: "sanhedrin", label: "מצבת סנהדרין (קיר)", from: 1920 },
-  { serviceSlug: "yachid", label: "מצבת יחיד", from: 4000 },
-  { serviceSlug: "machpela", label: "מצבת מכפלה", from: 4020 },
-  { serviceSlug: "machpela", label: "מצבת מכפלה לרוחב", from: 5200 },
-  { serviceSlug: "zugit", label: "מצבה זוגית / כפולה", from: 7220 },
+  { serviceSlug: "sanhedrin", label: "מצבת סנהדרין (קיר)", from: 2210 },
+  { serviceSlug: "yachid", label: "מצבת יחיד", from: 4600 },
+  { serviceSlug: "machpela", label: "מצבת מכפלה", from: 4620 },
+  { serviceSlug: "machpela", label: "מצבת מכפלה לרוחב", from: 5980 },
+  { serviceSlug: "zugit", label: "מצבה זוגית / כפולה", from: 8300 },
   { serviceSlug: "mishpachtit", label: "מצבה משפחתית", from: null },
   { serviceSlug: "granite", label: "מצבת גרניט", from: null },
   { serviceSlug: "even", label: "מצבת אבן טבעית", from: null },
