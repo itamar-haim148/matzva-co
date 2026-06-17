@@ -2,7 +2,9 @@
 
 import { useActionState } from "react";
 import { usePathname } from "next/navigation";
+import Script from "next/script";
 import { submitLead, type LeadState } from "@/app/actions";
+import { site } from "@/site.config";
 import styles from "./LeadForm.module.css";
 
 const initial: LeadState = { ok: false, message: "" };
@@ -10,6 +12,7 @@ const initial: LeadState = { ok: false, message: "" };
 export default function LeadForm({ heading }: { heading?: string }) {
   const [state, formAction, pending] = useActionState(submitLead, initial);
   const pathname = usePathname();
+  const siteKey = site.turnstileSiteKey;
 
   if (state.ok) {
     return (
@@ -22,6 +25,12 @@ export default function LeadForm({ heading }: { heading?: string }) {
 
   return (
     <div className={styles.card}>
+      {siteKey && (
+        <Script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+          strategy="afterInteractive"
+        />
+      )}
       <h2 className={styles.title}>{heading ?? "השאירו פרטים ונחזור אליכם"}</h2>
       <p className={styles.sub}>ליווי אישי, ללא התחייבות.</p>
 
@@ -91,6 +100,22 @@ export default function LeadForm({ heading }: { heading?: string }) {
             </span>
           )}
         </div>
+
+        <div className={styles.field}>
+          <label htmlFor="lf-notes">
+            פרטים נוספים / בית עלמין / הערות (אופציונלי)
+          </label>
+          <textarea id="lf-notes" name="notes" rows={3} />
+        </div>
+
+        {siteKey && (
+          <div
+            className="cf-turnstile"
+            data-sitekey={siteKey}
+            data-theme="light"
+            data-language="he"
+          />
+        )}
 
         {state.message && !state.ok && (
           <p className={styles.formErr} role="alert">

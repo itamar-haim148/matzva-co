@@ -27,6 +27,10 @@ export const site = {
   serviceArea: "ירושלים והסביבה",
   country: "IL",
 
+  // Cloudflare Turnstile public site key (NOT secret — safe to expose).
+  // Fill in after creating the widget; secret goes in TURNSTILE_SECRET_KEY env.
+  turnstileSiteKey: "",
+
   // Primary SEO geography
   primaryCity: "ירושלים",
   serviceRadiusKm: 30,
