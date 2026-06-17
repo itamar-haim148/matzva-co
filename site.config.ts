@@ -29,7 +29,7 @@ export const site = {
 
   // Cloudflare Turnstile public site key (NOT secret — safe to expose).
   // Fill in after creating the widget; secret goes in TURNSTILE_SECRET_KEY env.
-  turnstileSiteKey: "",
+  turnstileSiteKey: "0x4AAAAAADmRpBb3PqhLs-ln",
 
   // Google Place ID for the reviews widget (real reviews via Places API).
   // Needs GOOGLE_PLACES_API_KEY env too. Empty = reviews section hidden.
