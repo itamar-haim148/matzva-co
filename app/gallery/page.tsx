@@ -6,6 +6,7 @@ import Gallery from "@/components/Gallery";
 import Faq from "@/components/Faq";
 import CtaBand from "@/components/CtaBand";
 import { galleryFaq } from "@/lib/content";
+import { galleryCategories, galleryByCat } from "@/data/gallery";
 
 export const metadata: Metadata = {
   title: "גלריית מצבות — דוגמאות עבודה",
@@ -29,9 +30,19 @@ export default function GalleryPage() {
             אמן ועל פי ההלכה. כל מצבה מותאמת אישית לבקשת המשפחה.
           </p>
         </header>
-        <section style={{ paddingBlock: "12px 32px" }}>
-          <Gallery />
-        </section>
+        {galleryCategories.map((cat) => {
+          const items = galleryByCat(cat.key);
+          if (!items.length) return null;
+          return (
+            <section key={cat.key} style={{ paddingBlock: "12px 36px" }}>
+              <h2 style={{ marginBottom: 8 }}>{cat.title}</h2>
+              <p style={{ color: "var(--ink-soft)", maxWidth: "65ch", marginBottom: 18 }}>
+                {cat.desc}
+              </p>
+              <Gallery items={items} />
+            </section>
+          );
+        })}
         <article className={c.prose} style={{ paddingBottom: 48 }}>
           <h2>גלריית מצבות בירושלים — עבודות אמן באבן</h2>
           <p>

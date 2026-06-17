@@ -12,6 +12,17 @@
   max-width: 60ch;
 }
 
+.banner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21 / 8;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin: 8px 0 8px;
+  background: var(--bg-stone);
+  border: 1px solid var(--line);
+}
+
 .layout {
   display: grid;
   grid-template-columns: 1fr 360px;

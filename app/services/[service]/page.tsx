@@ -2,12 +2,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import c from "@/components/Content.module.css";
-import { services, serviceBySlug } from "@/data/services";
+import { services, serviceBySlug, serviceGalleryCat } from "@/data/services";
 import { cities } from "@/data/cities";
 import { serviceParagraphs, serviceHubFaq } from "@/lib/content";
+import { galleryByCat } from "@/data/gallery";
 import { site, priceFromText } from "@/site.config";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import LeadForm from "@/components/LeadForm";
+import Gallery from "@/components/Gallery";
 import Faq from "@/components/Faq";
 import CtaBand from "@/components/CtaBand";
 import JsonLd from "@/components/JsonLd";
@@ -109,6 +111,11 @@ export default async function ServiceHub({
             <LeadForm heading={`ייעוץ ל${s.name}`} />
           </aside>
         </div>
+
+        <section style={{ paddingBlock: "8px 48px" }}>
+          <h2 style={{ marginBottom: 16 }}>גלריית {s.name}</h2>
+          <Gallery items={galleryByCat(serviceGalleryCat[s.slug])} />
+        </section>
       </div>
 
       <section style={{ background: "var(--bg-soft)", paddingBlock: "48px" }}>

@@ -1,9 +1,16 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import c from "@/components/Content.module.css";
-import { services, serviceBySlug } from "@/data/services";
+import {
+  services,
+  serviceBySlug,
+  serviceImage,
+  serviceGalleryCat,
+} from "@/data/services";
 import { cities, cityBySlug } from "@/data/cities";
+import { galleryByCat } from "@/data/gallery";
 import { site, priceFromText } from "@/site.config";
 import {
   gridLead,
@@ -16,6 +23,7 @@ import {
 } from "@/lib/content";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import LeadForm from "@/components/LeadForm";
+import Gallery from "@/components/Gallery";
 import Faq from "@/components/Faq";
 import CtaBand from "@/components/CtaBand";
 import JsonLd from "@/components/JsonLd";
@@ -78,6 +86,17 @@ export default async function GridPage({
           </h1>
           <p className={c.lead}>{gridLead(s, ct)}</p>
         </header>
+
+        <div className={c.banner}>
+          <Image
+            src={serviceImage[s.slug]}
+            alt={`${s.name} ${ct.inForm}`}
+            fill
+            sizes="(max-width: 1140px) 100vw, 1140px"
+            style={{ objectFit: "cover" }}
+            priority
+          />
+        </div>
 
         <div className={c.layout}>
           <article className={c.prose}>
@@ -144,6 +163,13 @@ export default async function GridPage({
             <LeadForm heading={`ייעוץ ל${s.name} ${ct.inForm}`} />
           </aside>
         </div>
+
+        <section style={{ paddingBlock: "8px 48px" }}>
+          <h2 style={{ marginBottom: 16 }}>
+            דוגמאות ל{s.name} {ct.inForm}
+          </h2>
+          <Gallery items={galleryByCat(serviceGalleryCat[s.slug])} />
+        </section>
       </div>
 
       <section style={{ background: "var(--bg-soft)", paddingBlock: "48px" }}>

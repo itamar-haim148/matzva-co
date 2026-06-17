@@ -1,7 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./page.module.css";
 import { site, telLink, whatsappLink } from "@/site.config";
-import { services } from "@/data/services";
+import { services, serviceImage } from "@/data/services";
 import { cities } from "@/data/cities";
 import Button from "@/components/Button";
 import LeadForm from "@/components/LeadForm";
@@ -137,6 +138,15 @@ export default function Home() {
                 href={`/services/${s.slug}`}
                 className={styles.card}
               >
+                <span className={styles.cardImg}>
+                  <Image
+                    src={serviceImage[s.slug]}
+                    alt={s.name}
+                    fill
+                    sizes="(max-width: 520px) 100vw, (max-width: 900px) 50vw, 25vw"
+                    style={{ objectFit: "cover" }}
+                  />
+                </span>
                 <h3>{s.name}</h3>
                 <p>{s.short}</p>
               </Link>

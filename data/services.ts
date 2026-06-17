@@ -78,3 +78,32 @@ export const services: Service[] = [
 
 export const serviceBySlug = (slug: string) =>
   services.find((s) => s.slug === slug);
+
+/** Representative image per service (self-hosted gallery photos). */
+export const serviceImage: Record<string, string> = {
+  yachid: "/images/gallery/matzeva-2.webp",
+  zugit: "/images/gallery/matzeva-7.webp",
+  mishpachtit: "/images/gallery/matzeva-8.webp",
+  sanhedrin: "/images/gallery/matzeva-12.webp",
+  machpela: "/images/gallery/matzeva-5.webp",
+  granite: "/images/gallery/matzeva-4.webp",
+  even: "/images/gallery/matzeva-6.webp",
+  meutzevet: "/images/gallery/matzeva-3.webp",
+  andarta: "/images/gallery/matzeva-14.webp",
+};
+
+/** Maps a service to a gallery category (for the per-service gallery). */
+export const serviceGalleryCat: Record<
+  string,
+  "even" | "granite" | "couple-family" | "designed"
+> = {
+  yachid: "even",
+  zugit: "couple-family",
+  mishpachtit: "couple-family",
+  sanhedrin: "even",
+  machpela: "even",
+  granite: "granite",
+  even: "even",
+  meutzevet: "designed",
+  andarta: "designed",
+};
