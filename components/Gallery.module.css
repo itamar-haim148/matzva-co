@@ -3,32 +3,129 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
 .tile {
   position: relative;
+}
+.tileBtn {
+  position: relative;
+  display: block;
+  width: 100%;
   aspect-ratio: 4 / 3;
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--bg-stone);
   border: 1px solid var(--line);
+  cursor: zoom-in;
+  padding: 0;
 }
 .img {
   object-fit: cover;
   transition: transform 0.3s ease;
 }
-.tile:hover .img {
-  transform: scale(1.04);
+.tileBtn:hover .img {
+  transform: scale(1.05);
+}
+.zoom {
+  position: absolute;
+  inset-block-end: 8px;
+  inset-inline-end: 8px;
+  background: rgba(35, 39, 44, 0.7);
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.tileBtn:hover .zoom,
+.tileBtn:focus-visible .zoom {
+  opacity: 1;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(20, 23, 26, 0.92);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+.lbFig {
+  margin: 0;
+  max-width: min(1100px, 94vw);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.lbImg {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+.lbCaption {
+  color: #e6edf1;
+  margin-top: 12px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+.lbBtn {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.lbBtn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+.lbClose {
+  top: 18px;
+  inset-inline-end: 18px;
+  font-size: 1.3rem;
+}
+.lbPrev {
+  inset-inline-start: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.lbNext {
+  inset-inline-end: 18px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 @media (max-width: 1000px) {
   .grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 560px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .lbBtn {
+    width: 44px;
+    height: 44px;
   }
 }

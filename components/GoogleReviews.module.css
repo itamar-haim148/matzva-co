@@ -1,0 +1,47 @@
+.wrap {
+  text-align: center;
+}
+.summary {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--ink);
+}
+.stars {
+  color: var(--accent);
+  letter-spacing: 2px;
+}
+.grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  text-align: start;
+}
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+.text {
+  color: var(--ink-soft);
+  margin: 8px 0 12px;
+}
+.author {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.src {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

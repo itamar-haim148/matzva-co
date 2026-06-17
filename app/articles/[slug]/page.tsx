@@ -5,7 +5,7 @@ import c from "@/components/Content.module.css";
 import { site } from "@/site.config";
 import { getAllArticles, getArticle } from "@/lib/articles";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import CtaBand from "@/components/CtaBand";
+import LeadSection from "@/components/LeadSection";
 import JsonLd from "@/components/JsonLd";
 
 type Params = { slug: string };
@@ -76,7 +76,11 @@ export default async function ArticlePage({
           <MDXRemote source={a.content} />
         </article>
       </div>
-      <CtaBand />
+      <LeadSection
+        title="מתלבטים? נשמח לעזור לכם להחליט"
+        subtitle="השאירו פרטים ונציג רגיש ומקצועי יחזור אליכם עם מידע, אפשרויות והכוונה — ללא התחייבות."
+        formHeading="קבלת ייעוץ והצעת מחיר"
+      />
       <JsonLd data={articleSchema} />
     </>
   );

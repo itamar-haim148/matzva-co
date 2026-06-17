@@ -5,6 +5,8 @@ import { services } from "@/data/services";
 import { cities } from "@/data/cities";
 import Button from "@/components/Button";
 import LeadForm from "@/components/LeadForm";
+import LeadSection from "@/components/LeadSection";
+import GoogleReviews from "@/components/GoogleReviews";
 import Faq from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
 import { localBusiness } from "@/lib/schema";
@@ -58,11 +60,13 @@ export default function Home() {
       <section className={styles.hero}>
         <div className={`container ${styles.heroGrid}`}>
           <div className={styles.heroCopy}>
-            <h1>הקמת מצבות בירושלים והסביבה — בכבוד הראוי</h1>
+            <p className={styles.kicker}>
+              מצבות בירושלים והסביבה · על פי ההלכה
+            </p>
+            <h1>אנחנו כאן כדי לעזור לכם להנציח את זכרם בכבוד</h1>
             <p className={styles.heroLead}>
-              {site.brand} — הקמת מצבות בירושלים ובכל יישובי האזור, בעבודת אמן
-              ועל פי המסורת וההלכה היהודית. ליווי אישי מרגע הפנייה ועד הקמת
-              המצבה.
+              השאירו פרטים, ונציג אנושי ילווה אתכם ברגישות ובסבלנות צעד אחר צעד,
+              ללא כל התחייבות.
             </p>
             <div className={styles.heroChips}>
               <a className={styles.chip} href={telLink()}>
@@ -141,6 +145,24 @@ export default function Home() {
         </div>
       </section>
 
+      {/* REVIEWS (real Google reviews — shows when configured) */}
+      <section className={styles.section}>
+        <div className="container">
+          <div className={styles.sectionHead}>
+            <h2>המלצות</h2>
+            <p>מה אומרים עלינו לקוחות — המלצות אמיתיות מתוך Google.</p>
+          </div>
+          <GoogleReviews />
+        </div>
+      </section>
+
+      {/* LEAD SECTION A */}
+      <LeadSection
+        title="צריכים עזרה או הכוונה בבחירת מצבה?"
+        subtitle="השאירו פרטים ונחזור אליכם לשיחת ייעוץ רגועה, בגובה העיניים ובקצב שלכם."
+        formHeading="לשיחת ייעוץ ללא התחייבות"
+      />
+
       {/* AREAS */}
       <section className={styles.section}>
         <div className="container">
@@ -217,6 +239,14 @@ export default function Home() {
           </article>
         </div>
       </section>
+
+      {/* LEAD SECTION B */}
+      <LeadSection
+        title="נשמח להקשיב ולעזור לכם לבחור"
+        subtitle="מלאו את הפרטים ונציג מקצועי ורגיש שלנו יחזור אליכם עם כל המידע והאפשרויות."
+        formHeading="השאירו פרטים"
+        alt
+      />
 
       {/* FAQ */}
       <section className={styles.section}>

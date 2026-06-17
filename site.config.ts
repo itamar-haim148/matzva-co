@@ -31,6 +31,10 @@ export const site = {
   // Fill in after creating the widget; secret goes in TURNSTILE_SECRET_KEY env.
   turnstileSiteKey: "",
 
+  // Google Place ID for the reviews widget (real reviews via Places API).
+  // Needs GOOGLE_PLACES_API_KEY env too. Empty = reviews section hidden.
+  googlePlaceId: "",
+
   // Primary SEO geography
   primaryCity: "ירושלים",
   serviceRadiusKm: 30,

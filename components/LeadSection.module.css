@@ -1,0 +1,39 @@
+.band {
+  padding-block: clamp(36px, 6vw, 64px);
+  background: var(--primary);
+  color: #fff;
+}
+.band.alt {
+  background: var(--primary-dark);
+}
+.inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+}
+.title {
+  color: #fff;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+}
+.sub {
+  color: #d8e0e5;
+  margin: 12px 0 22px;
+  font-size: 1.1rem;
+  max-width: 46ch;
+}
+.ctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.formWrap {
+  min-width: 0;
+}
+
+@media (max-width: 880px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
