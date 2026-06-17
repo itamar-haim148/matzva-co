@@ -61,10 +61,12 @@ export default function Home() {
       <section className={styles.hero}>
         <div className={`container ${styles.heroGrid}`}>
           <div className={styles.heroCopy}>
-            <p className={styles.kicker}>
+            <h1 className={styles.kicker}>
               מצבות בירושלים והסביבה · על פי ההלכה
-            </p>
-            <h1>אנחנו כאן כדי לעזור לכם להנציח את זכרם בכבוד</h1>
+            </h1>
+            <h2 className={styles.heroTitle}>
+              אנחנו כאן כדי לעזור לכם להנציח את זכרם בכבוד
+            </h2>
             <p className={styles.heroLead}>
               השאירו פרטים, ונציג אנושי ילווה אתכם ברגישות ובסבלנות צעד אחר צעד,
               ללא כל התחייבות.

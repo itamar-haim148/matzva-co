@@ -23,7 +23,10 @@
   align-items: center;
   padding-block: clamp(40px, 7vw, 80px);
 }
-.heroCopy h1 {
+.heroTitle {
+  font-size: clamp(1.9rem, 4.5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.2;
   color: #fff;
   margin-bottom: 16px;
 }

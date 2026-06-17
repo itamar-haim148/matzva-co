@@ -1,9 +1,16 @@
 .card {
   background: #fff;
+  color: var(--ink); /* reset inherited light text (e.g. inside dark hero/bands) */
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   padding: 26px;
   box-shadow: var(--shadow);
+}
+.card .title {
+  color: var(--ink);
+}
+.field label {
+  color: var(--ink);
 }
 .title {
   font-size: 1.4rem;
