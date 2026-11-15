@@ -4,7 +4,7 @@ import { site, telLink, whatsappLink } from "@/site.config";
 export default function FloatingCTA() {
   const waMsg = `שלום, הגעתי מהאתר ${site.brand} ואשמח לקבל פרטים על הקמת מצבה.`;
   return (
-    <div className={styles.wrap} aria-label="יצירת קשר מהירה">
+    <div className={styles.wrap} aria-label="יצירת קשר מהירה" data-lead-cta>
       <a
         className={`${styles.fab} ${styles.whatsapp}`}
         href={whatsappLink(waMsg)}

@@ -1,11 +1,13 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { usePathname } from "next/navigation";
 import Script from "next/script";
 import { submitLead, type LeadState } from "@/app/actions";
 import { site } from "@/site.config";
 import styles from "./LeadForm.module.css";
+import { HeterIskaLine } from "./HeterIska";
+import { SHABBAT_CLOSED_MSG_HE, clientClosed } from "@/lib/shabbat";
 
 const initial: LeadState = { ok: false, message: "" };
 
@@ -13,18 +15,29 @@ export default function LeadForm({ heading }: { heading?: string }) {
   const [state, formAction, pending] = useActionState(submitLead, initial);
   const pathname = usePathname();
   const siteKey = site.turnstileSiteKey;
+  const [closedMsg, setClosedMsg] = useState("");
+  // Shabbat / Yom Tov: the client gate hides the form; never submit while closed.
+  const guardedAction = (fd: FormData) => {
+    if (clientClosed()) {
+      setClosedMsg(SHABBAT_CLOSED_MSG_HE);
+      return;
+    }
+    setClosedMsg("");
+    formAction(fd);
+  };
 
   if (state.ok) {
     return (
       <div className={styles.card} role="status" aria-live="polite">
         <h2 className={styles.title}>{heading ?? "השארת פרטים"}</h2>
         <p className={styles.success}>{state.message}</p>
+        <HeterIskaLine />
       </div>
     );
   }
 
   return (
-    <div className={styles.card}>
+    <div className={styles.card} data-lead-cta>
       {siteKey && (
         <Script
           src="https://challenges.cloudflare.com/turnstile/v0/api.js"
@@ -34,7 +47,7 @@ export default function LeadForm({ heading }: { heading?: string }) {
       <h2 className={styles.title}>{heading ?? "השאירו פרטים ונחזור אליכם"}</h2>
       <p className={styles.sub}>ליווי אישי, ללא התחייבות.</p>
 
-      <form className={styles.form} action={formAction} noValidate>
+      <form className={styles.form} action={guardedAction} noValidate>
         <input type="hidden" name="source_path" value={pathname ?? ""} />
         {/* honeypot */}
         <input
@@ -117,6 +130,11 @@ export default function LeadForm({ heading }: { heading?: string }) {
           />
         )}
 
+        {closedMsg && (
+          <p className={styles.formErr} role="alert">
+            {closedMsg}
+          </p>
+        )}
         {state.message && !state.ok && (
           <p className={styles.formErr} role="alert">
             {state.message}
@@ -126,6 +144,7 @@ export default function LeadForm({ heading }: { heading?: string }) {
         <button type="submit" className={styles.submit} disabled={pending}>
           {pending ? "שולח..." : "שליחה"}
         </button>
+        <HeterIskaLine />
       </form>
     </div>
   );

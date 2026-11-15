@@ -2,6 +2,7 @@
 
 import { headers } from "next/headers";
 import { insertLead } from "@/lib/db";
+import { SHABBAT_CLOSED_MSG_HE, shabbatWindow } from "@/lib/shabbat";
 
 export type LeadState = {
   ok: boolean;
@@ -64,6 +65,7 @@ async function notifyBrevo(rec: {
           <p><b>יישוב/כתובת:</b> ${esc(rec.address)}</p>
           <p><b>הערות:</b> ${esc(rec.notes || "—")}</p>
           <p><b>עמוד מקור:</b> ${esc(rec.source_path || "—")}</p>
+          <p style="font-size:12px;color:#666">כפוף לתנאי היתר עיסקא ״ברית פנחס״ התלוי בתקנון האתר: <a href="https://matzva.co/terms#heter-iska">https://matzva.co/terms#heter-iska</a></p>
         </div>`,
       }),
     });
@@ -76,6 +78,9 @@ export async function submitLead(
   _prev: LeadState,
   formData: FormData
 ): Promise<LeadState> {
+  // Shabbat / Yom Tov gate (proxy.ts answers 423 first; kill SHABBAT_GATE=0).
+  if (shabbatWindow()) return { ok: false, message: SHABBAT_CLOSED_MSG_HE };
+
   // Honeypot — bots fill hidden fields.
   if ((formData.get("company") as string)?.trim()) {
     return { ok: true, message: "תודה, נחזור אליכם בהקדם." };

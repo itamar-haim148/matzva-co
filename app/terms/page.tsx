@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import c from "@/components/Content.module.css";
 import { site } from "@/site.config";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { HeterIskaSection } from "@/components/HeterIska";
 
 export const metadata: Metadata = {
   title: "תקנון ומדיניות פרטיות",
@@ -103,6 +104,8 @@ export default function TermsPage() {
             שאלה לפני תחילת העבודה.
           </p>
           <p>עודכן ביוני 2026.</p>
+
+          <HeterIskaSection />
         </article>
       </div>
     </>

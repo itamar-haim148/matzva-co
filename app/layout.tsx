@@ -7,6 +7,8 @@ import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
 import Analytics from "@/components/Analytics";
 import SiteWide from "@/components/SiteWide";
+import { ShabbatGate } from "@/components/ShabbatGate";
+import { GATE_BUILD_ENABLED, prepaintScript } from "@/lib/shabbat";
 
 const heebo = Heebo({
   subsets: ["hebrew", "latin"],
@@ -44,8 +46,15 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang={site.lang} dir={site.dir} className={heebo.variable}>
+    <html lang={site.lang} dir={site.dir} className={heebo.variable} suppressHydrationWarning>
       <body>
+        {GATE_BUILD_ENABLED ? (
+          <>
+            {/* Shabbat gate: pre-paint class (cache-safe), then the live client gate. */}
+            <script dangerouslySetInnerHTML={{ __html: prepaintScript() }} />
+            <ShabbatGate />
+          </>
+        ) : null}
         <Analytics />
         <a className="skip-link" href="#main">
           דלג לתוכן הראשי
