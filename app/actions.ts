@@ -65,7 +65,7 @@ async function notifyBrevo(rec: {
           <p><b>יישוב/כתובת:</b> ${esc(rec.address)}</p>
           <p><b>הערות:</b> ${esc(rec.notes || "—")}</p>
           <p><b>עמוד מקור:</b> ${esc(rec.source_path || "—")}</p>
-          <p style="font-size:12px;color:#666">כפוף לתנאי היתר עיסקא ״ברית פנחס״ התלוי בתקנון האתר: <a href="https://matzva.co/terms#heter-iska">https://matzva.co/terms#heter-iska</a></p>
+          ${process.env.NEXT_PUBLIC_HETER_ISKA_OUTSIDE === "1" ? `<p style="font-size:12px;color:#666">כפוף לתנאי היתר עיסקא ״ברית פנחס״ התלוי בתקנון האתר: <a href="https://matzva.co/terms#heter-iska">https://matzva.co/terms#heter-iska</a></p>` : ""}
         </div>`,
       }),
     });

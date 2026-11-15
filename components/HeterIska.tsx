@@ -10,6 +10,8 @@ import { HETER_DATE_HE, HETER_PDF, SHTAR_PARAS } from "@/lib/heterIskaShtar";
 
 export const HETER_TERMS_HREF = "/terms#heter-iska";
 export const HETER_TERMS_ABS = "https://matzva.co/terms#heter-iska";
+// Owner ruling 2026-11-15: Heter Iska only inside the terms page. Outside placements default OFF.
+export const HETER_OUTSIDE = process.env.NEXT_PUBLIC_HETER_ISKA_OUTSIDE === "1";
 export const HETER_LINE_TEXT = "כפוף לתנאי היתר עיסקא ״ברית פנחס״ התלוי בתקנון האתר";
 
 const PARTY_A = "מצבה יהודית (matzva.co)";
@@ -18,6 +20,7 @@ const CLAUSE_EXTRA = "";
 const PARTY_B = "כל המתקשר עם העסק (לקוח, ספק או צד אחר)";
 
 export function HeterIskaLine({ center = false }: { center?: boolean }) {
+  if (!HETER_OUTSIDE) return null;
   return (
     <p
       dir="rtl"

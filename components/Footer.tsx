@@ -3,7 +3,7 @@ import styles from "./Footer.module.css";
 import { site, telLink, whatsappLink } from "@/site.config";
 import { services } from "@/data/services";
 import { cities } from "@/data/cities";
-import { HeterIskaLine, HETER_TERMS_HREF } from "./HeterIska";
+import { HeterIskaLine, HETER_OUTSIDE, HETER_TERMS_HREF } from "./HeterIska";
 
 export default function Footer() {
   const year = 2026;
@@ -89,11 +89,13 @@ export default function Footer() {
                 תקנון ופרטיות
               </Link>
             </li>
+            {HETER_OUTSIDE && (
             <li>
               <a href={HETER_TERMS_HREF} className={styles.link}>
                 היתר עיסקא
               </a>
             </li>
+            )}
           </ul>
         </div>
       </div>
